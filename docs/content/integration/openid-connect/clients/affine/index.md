@@ -1,6 +1,6 @@
 ---
-title: "Affine"
-description: "Integrating Affine with the Authelia OpenID Connect 1.0 Provider."
+title: "AFFiNE"
+description: "Integrating AFFiNE with the Authelia OpenID Connect 1.0 Provider."
 summary: ""
 date: 2026-04-20
 draft: true
@@ -14,8 +14,8 @@ support:
   versions: true
   integration: true
 seo:
-  title: "Affine | OpenID Connect 1.0 | Integration"
-  description: "Step-by-step guide to configuring Affine with OpenID Connect 1.0 for secure SSO. Enhance your login flow using Authelia’s modern identity management."
+  title: "AFFiNE | OpenID Connect 1.0 | Integration"
+  description: "Step-by-step guide to configuring AFFiNE with OpenID Connect 1.0 for secure SSO. Enhance your login flow using Authelia’s modern identity management."
   canonical: "" # custom canonical URL (optional)
   noindex: false # false (default) or true
 ---
@@ -24,7 +24,7 @@ seo:
 
 - [Authelia]
   - [v4.39.13](https://github.com/authelia/authelia/releases/tag/v4.39.13)
-- [Affine]
+- [AFFiNE]
   - [v0.26.3](https://github.com/toeverything/AFFiNE/releases/tag/v0.26.3)
 
 {{% oidc-common %}}
@@ -46,7 +46,7 @@ Some of the values presented in this guide can automatically be replaced with do
 
 ### Authelia
 
-The following YAML configuration is an example __Authelia__ [client configuration] for use with [Affine] which will
+The following YAML configuration is an example __Authelia__ [client configuration] for use with [AFFiNE] which will
 operate with the application example:
 
 ```yaml {title="configuration.yml"}
@@ -56,7 +56,7 @@ identity_providers:
     ## See: https://www.authelia.com/c/oidc
     clients:
       - client_id: 'affine'
-        client_name: 'Affine'
+        client_name: 'AFFiNE'
         client_secret: '$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng'  # The digest of 'insecure_secret'.
         public: false
         authorization_policy: 'two_factor'
@@ -64,7 +64,6 @@ identity_providers:
         pkce_challenge_method: ''
         redirect_uris:
           - 'https://affine.{{< sitevar name="domain" nojs="example.com" >}}/oauth/callback'
-          - 'https://affine.{{< sitevar name="domain" nojs="example.com" >}}/admin/settings'
         scopes:
           - 'openid'
           - 'profile'
@@ -80,13 +79,13 @@ identity_providers:
 
 ### Application
 
-To configure [Affine] there is one method, using the [Web GUI](#web-gui).
+To configure [AFFiNE] there is one method, using the [Web GUI](#web-gui).
 
 #### Web GUI
 
-To configure [Affine] to utilize Authelia as an [OpenID Connect 1.0] Provider, use the following instructions:
+To configure [AFFiNE] to utilize Authelia as an [OpenID Connect 1.0] Provider, use the following instructions:
 
-1. Login to [Affine].
+1. Login to [AFFiNE].
 2. Navigate to admin settings: `https://affine.{{< sitevar name="domain" nojs="example.com" >}}/admin/settings`.
 3. Scroll down to the `OAuth` heading and set the `OIDC OAuth provider config` to:
 ```
@@ -96,9 +95,9 @@ To configure [Affine] to utilize Authelia as an [OpenID Connect 1.0] Provider, u
 
 ## See Also
 
-- [Affine OAuth Authentication Documentation](https://docs.affine.pro/self-host-affine/administer/oauth-2-0)
+- [AFFiNE OAuth Authentication Documentation](https://docs.affine.pro/self-host-affine/administer/oauth-2-0)
 
-[Affine]: https://affine.pro
+[AFFiNE]: https://affine.pro
 [Authelia]: https://www.authelia.com
 [OpenID Connect 1.0]: ../../introduction.md
 [client configuration]: ../../../../configuration/identity-providers/openid-connect/clients.md
