@@ -2,8 +2,8 @@
 title: "Affine"
 description: "Integrating Affine with the Authelia OpenID Connect 1.0 Provider."
 summary: ""
-date: 2024-04-16T06:05:17+10:00
-draft: false
+date: 2026-04-20
+draft: true
 images: []
 weight: 620
 toc: true
@@ -23,9 +23,9 @@ seo:
 ## Tested Versions
 
 - [Authelia]
-  - [v4.39.0](https://github.com/authelia/authelia/releases/tag/v4.39.0)
+  - [v4.39.13](https://github.com/authelia/authelia/releases/tag/v4.39.13)
 - [Affine]
-  - [v1.132.3](https://github.com/affine-app/affine/releases/tag/v1.132.3)
+  - [v0.26.3](https://github.com/toeverything/AFFiNE/releases/tag/v0.26.3)
 
 {{% oidc-common %}}
 
@@ -56,16 +56,15 @@ identity_providers:
     ## See: https://www.authelia.com/c/oidc
     clients:
       - client_id: 'affine'
-        client_name: 'affine'
+        client_name: 'Affine'
         client_secret: '$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng'  # The digest of 'insecure_secret'.
         public: false
         authorization_policy: 'two_factor'
         require_pkce: false
         pkce_challenge_method: ''
         redirect_uris:
-          - 'https://affine.{{< sitevar name="domain" nojs="example.com" >}}/auth/login'
-          - 'https://affine.{{< sitevar name="domain" nojs="example.com" >}}/user-settings'
-          - 'app.affine:///oauth-callback'
+          - 'https://affine.{{< sitevar name="domain" nojs="example.com" >}}/oauth/callback'
+          - 'https://affine.{{< sitevar name="domain" nojs="example.com" >}}/admin/settings'
         scopes:
           - 'openid'
           - 'profile'
@@ -88,19 +87,16 @@ To configure [Affine] there is one method, using the [Web GUI](#web-gui).
 To configure [Affine] to utilize Authelia as an [OpenID Connect 1.0] Provider, use the following instructions:
 
 1. Login to [Affine].
-2. Navigate to OAuth Settings.
-3. Configure the following options:
-    - Issuer URL: `https://{{< sitevar name="subdomain-authelia" nojs="auth" >}}.{{< sitevar name="domain" nojs="example.com" >}}/.well-known/openid-configuration`.
-    - Client ID: `affine`.
-    - Client Secret: `insecure_secret`.
-    - Scope: `openid profile email`.
-    - Button Text: `Login with Authelia`.
-    - Auto Register: Enable if desired.
-4. Press `Save` at the bottom
+2. Navigate to admin settings: `https://affine.{{< sitevar name="domain" nojs="example.com" >}}/admin/settings`.
+3. Scroll down to the `OAuth` heading and set the `OIDC OAuth provider config` to:
+```
+{"args":{},"issuer":"https://{{< sitevar name="subdomain-authelia" nojs="auth" >}}.{{< sitevar name="domain" nojs="example.com" >}}","clientId":"affine","clientSecret":"insecure_secret"}
+```
+4. Press `Save`.
 
 ## See Also
 
-- [Affine OAuth Authentication Guide](https://affine.app/docs/administration/oauth)
+- [Affine OAuth Authentication Documentation](https://docs.affine.pro/self-host-affine/administer/oauth-2-0)
 
 [Affine]: https://affine.pro
 [Authelia]: https://www.authelia.com
