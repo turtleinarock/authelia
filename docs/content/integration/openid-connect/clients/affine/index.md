@@ -2,8 +2,8 @@
 title: "AFFiNE"
 description: "Integrating AFFiNE with the Authelia OpenID Connect 1.0 Provider."
 summary: ""
-date: 2026-04-20
-draft: true
+date: 2026-04-30
+draft: false
 images: []
 weight: 620
 toc: true
