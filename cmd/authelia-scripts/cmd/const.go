@@ -19,6 +19,7 @@ const (
 
 const (
 	masterTag    = "master"
+	stringTrue   = "true"
 	stringFalse  = "false"
 	webDirectory = "web"
 )
@@ -33,6 +34,10 @@ const (
 const (
 	txtDirectoryTidle = "` directory"
 	txtRunningSuite   = "Running suite ("
+)
+
+var (
+	buildkitePrivatePipelines = []string{"authelia-cve"}
 )
 
 const fmtLDFLAGSX = "-X 'github.com/authelia/authelia/v4/internal/utils.%s=%s'"
