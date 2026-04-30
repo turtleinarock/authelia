@@ -88,7 +88,7 @@ To configure [AFFiNE] to utilize Authelia as an [OpenID Connect 1.0] Provider, u
 1. Login to [AFFiNE].
 2. Navigate to admin settings: `https://affine.{{< sitevar name="domain" nojs="example.com" >}}/admin/settings`.
 3. Scroll down to the `OAuth` heading and set the `OIDC OAuth provider config` to:
-```
+```json
 {"args":{},"issuer":"https://{{< sitevar name="subdomain-authelia" nojs="auth" >}}.{{< sitevar name="domain" nojs="example.com" >}}","clientId":"affine","clientSecret":"insecure_secret"}
 ```
 4. Press `Save`.
